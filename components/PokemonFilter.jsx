@@ -1,5 +1,4 @@
-import React from 'react';
-import store from '../store';
+import store from '../src/store';
 import { observer } from 'mobx-react';
 
 import styled from '@emotion/styled';

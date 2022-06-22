@@ -1,6 +1,5 @@
-import React from 'react';
 import Button from '@mui/material/Button';
-import PokemonType from '../PokemonType';
+import PokemonType from '../src/PokemonType';
 
 const PokemonRow = ({ pokemon, onSelect }) => (
 	<tr>
