@@ -5,6 +5,8 @@ import PokemonTable from '../components/PokemonTable';
 import styled from '@emotion/styled';
 import { CssBaseline } from '@mui/material';
 
+import store from '../src/store';
+
 const Title = styled.h1`
 	text-align: center;
 `;
@@ -19,7 +21,17 @@ const Container = styled.div`
 	padding-top: 1em;
 `;
 
-export default function Home() {
+export async function getServerSideProps() {
+	const pokemon = await (
+		await fetch('http://localhost:3000/pokemon.json')
+	).json();
+	return {
+		props: { pokemon }, // will be passed to the page component as props
+	};
+}
+
+export default function Home({ pokemon }) {
+	store.setPokemon(pokemon);
 	return (
 		<Container>
 			<CssBaseline />
