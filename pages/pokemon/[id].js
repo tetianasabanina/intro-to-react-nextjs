@@ -18,11 +18,21 @@ const TypeHeader = styled.span`
 	font-weight: bold;
 `;
 
-export const getServerSideProps = async (context) => {
-	const allPokemon = await (
-		await fetch('http://localhost:3000/pokemon.json')
-	).json();
-	const pokemon = allPokemon.find((p) => p.id === parseInt(context.query.id));
+export async function getStaticPaths() {
+	const allPokemon = require('../../src/pokemon.json');
+	return {
+		paths: allPokemon.map((p) => ({
+			params: {
+				id: p.id.toString(),
+			},
+		})),
+		fallback: false,
+	};
+}
+
+export const getStaticProps = async (context) => {
+	const allPokemon = require('../../src/pokemon.json');
+	const pokemon = allPokemon.find((p) => p.id === parseInt(context.params.id));
 	return {
 		props: { pokemon },
 	};

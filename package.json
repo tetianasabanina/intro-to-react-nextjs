@@ -1,18 +1,20 @@
 {
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mui/material": "^5.8.5",
-    "mobx": "^6.6.0",
-    "mobx-react": "^7.5.0",
-    "next": "latest",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
-  }
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"export": "next export",
+		"start": "next start",
+		"deploy": "next build && touch out/.nojekyll && git add out/ && git commit -m \"Deploy\" && git subtree push --prefix out origin gh-pages"
+	},
+	"dependencies": {
+		"@emotion/react": "^11.9.3",
+		"@emotion/styled": "^11.9.3",
+		"@mui/material": "^5.8.5",
+		"mobx": "^6.6.0",
+		"mobx-react": "^7.5.0",
+		"next": "latest",
+		"react": "17.0.2",
+		"react-dom": "17.0.2"
+	}
 }
